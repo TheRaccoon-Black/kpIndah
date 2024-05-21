@@ -20,7 +20,7 @@ class CicilanController extends Controller
     {
         $role = Auth::user()->role;
         $id = Auth::user()->id;
-        if ($role == '') {
+        if ($role == 'admin') {
             $cicilan = Cicilan::query()->get();
         } else {
             $cicilan = Cicilan::where('user_id', $id)->get();

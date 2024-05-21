@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->foreignId('pinjaman_id');
-            $table->integer('nominal');
+            $table->integer('nominal')->default(0);
             $table->date('tanggal_pembayaran');
             $table->double('bunga')->default(0.1);
             $table->integer('total')->nullable();

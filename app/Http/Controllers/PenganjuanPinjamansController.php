@@ -21,7 +21,7 @@ class PenganjuanPinjamansController extends Controller
         $role = Auth::user()->role;
         $id = Auth::user()->id;
 
-        if ($role == '') {
+        if ($role == 'admin') {
             $penganjuanpinjamans = PenganjuanPinjamans::query()->orderBy('tanggal_pengajuan', 'DESC')->get();
         } else {
             $penganjuanpinjamans = PenganjuanPinjamans::where('user_id', $id)->orderBy('tanggal_pengajuan', 'DESC')->get();
