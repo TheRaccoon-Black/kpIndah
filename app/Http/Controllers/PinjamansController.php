@@ -101,8 +101,8 @@ class PinjamansController extends Controller
             'pengajuan_id' => $request->pengajuan_id,
             'nominal' => $penganjuanpinjaman->nominal,
             'tanggal' => $request->tanggal,
-            'bunga' => 0.015,
-            'total' => $request->total,
+            // 'bunga' => 0.015,
+            // 'total' => $request->total,
             'status' => 'Belum Lunas'
         ]);
 

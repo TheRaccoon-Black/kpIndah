@@ -65,10 +65,10 @@ class CicilanController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'pinjaman_id' => 'required',
-            'tanggal_pembayaran' => 'required',
-        ]);
+        // $validatedData = $request->validate([
+        //     'pinjaman_id' => 'required',
+        //     'tanggal_pembayaran' => 'required',
+        // ]);
         $pinjaman = Pinjamans::find($request->pinjaman_id);
         $cicilan = $pinjaman->total / 10;
         Cicilan::create([

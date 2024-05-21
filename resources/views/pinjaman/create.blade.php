@@ -43,17 +43,13 @@
                                                     <div class="input-group input-group-merge">
                                                         <span id="basic-icon-default-fullname2" class="input-group-text"><i
                                                                 class="bx bx-user"></i></span>
-                                                        <select class="form-select @error('nama') is-invalid @enderror"
-                                                            id="pengajuan_id" name="pengajuan_id" aria-label="Nama"
-                                                            aria-describedby="basic-icon-default-fullname2">
-                                                            <option value="">Pilih pengajuan</option>
-                                                                <option selected value="nominal">Wajib</option>
-                                                                <option selected value="tipe">Pokok</option>
-                                                            </select>
-                                                                @foreach ($pengajuan as $p)
-                                                                <input type="hidden">
-                                                                @endforeach
-                                                        </select>
+                                                                <select class="form-select @error('nama') is-invalid @enderror" id="pengajuan_id" name="pengajuan_id" aria-label="Nama" aria-describedby="basic-icon-default-fullname2">
+    <option value="">Pilih pengajuan</option>
+    @foreach ($pengajuan as $p)
+        <option value="{{ $p->id }}" id="nominal{{ $p->id }}">{{ $p->nama }} - {{ $p->nominal }}</option>
+    @endforeach
+</select>
+
                                                     </div>
 
                                                     @error('nama')
