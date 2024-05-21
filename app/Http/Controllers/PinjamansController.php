@@ -89,24 +89,24 @@ class PinjamansController extends Controller
         //     'pengajuan_id' => 'required',
         //     'total' => 'required|numeric',
         // ]);
-            dd($request);
-        // $penganjuanpinjaman = PenganjuanPinjamans::find($request->pengajuan_id);
+            // dd($request);
+        $penganjuanpinjaman = PenganjuanPinjamans::find($request->pengajuan_id);
 
-        // if (!$penganjuanpinjaman) {
-        //     return redirect('/pinjaman')->with('error', 'Pengajuan pinjaman tidak ditemukan.');
-        // }
+        if (!$penganjuanpinjaman) {
+            return redirect('/pinjaman')->with('error', 'Pengajuan pinjaman tidak ditemukan.');
+        }
 
-        // Pinjamans::create([
-        //     'user_id' => $penganjuanpinjaman->user_id,
-        //     'pengajuan_id' => $request->pengajuan_id,
-        //     'nominal' => $penganjuanpinjaman->nominal,
-        //     'tanggal' => $request->tanggal,
-        //     'bunga' => 0.015,
-        //     'total' => $request->total,
-        //     'status' => 'Belum Lunas'
-        // ]);
+        Pinjamans::create([
+            'user_id' => $penganjuanpinjaman->user_id,
+            'pengajuan_id' => $request->pengajuan_id,
+            'nominal' => $penganjuanpinjaman->nominal,
+            'tanggal' => $request->tanggal,
+            'bunga' => 0.015,
+            'total' => $request->total,
+            'status' => 'Belum Lunas'
+        ]);
 
-        // return redirect('/pinjaman')->with('pesan', 'Data Berhasil Ditambahkan');
+        return redirect('/pinjaman')->with('pesan', 'Data Berhasil Ditambahkan');
     }
     public function gaji(){
         $user = User::where('role', 'anggota')->get();

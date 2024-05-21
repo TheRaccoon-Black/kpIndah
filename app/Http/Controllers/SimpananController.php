@@ -19,7 +19,7 @@ class SimpananController extends Controller
         $role = Auth::user()->role;
         $id = Auth::user()->id;
 
-        if ($role == '') {
+        if ($role == 'admin') {
             $simpanan = Simpanan::query()->get();
         } else {
             $simpanan = Simpanan::where('user_id', $id)->get();
@@ -61,7 +61,7 @@ class SimpananController extends Controller
             'tanggal' => 'required',
             'updated_at' => 'required',
             'created_at' => 'required',
-            
+
         ]);
         Simpanan::create($validatedData);
         return redirect('/simpanan')->with('pesan','Data Berhasil Ditambahkan');
